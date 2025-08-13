@@ -1,0 +1,221 @@
+
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>LuxDetailing Center — Ubicación</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head><body>
+<header class="site-header py-2 border-bottom"><div class="container d-flex align-items-center justify-content-between">
+  <a href="index.html" class="d-flex align-items-center text-white text-decoration-none">
+    <img src="images/icono.jpg" alt="Logo LuxDetailing Center" width="36" height="36" class="me-2 rounded-circle">
+    <span class="fw-bold">LuxDetailing Center</span>
+  </a>
+</div></header>
+<nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm"><div class="container">
+  <a class="navbar-brand d-lg-none" href="#">Menú</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id="mainNav">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link " href="historia.html">Historia</a></li>
+      <li class="nav-item"><a class="nav-link " href="servicios.html">Servicios</a></li>
+      <li class="nav-item"><a class="nav-link " href="galeria.html">Galería</a></li>
+      <li class="nav-item"><a class="nav-link " href="multimedia.html">Multimedia</a></li>
+      <li class="nav-item"><a class="nav-link active" href="ubicacion.html">Ubicación</a></li>
+      <li class="nav-item"><a class="nav-link " href="contacto.html">Contacto</a></li>
+      <li class="nav-item"><a class="nav-link " href="acerca.html">Acerca</a></li>
+      <li class="nav-item"><a class="nav-link " href="autor.html">Autor</a></li>
+    </ul>
+    <div class="d-flex gap-2">
+      <a class="btn btn-wa btn-sm" target="_blank" href="https://wa.me/50684529792">WhatsApp</a>
+    </div>
+  </div>
+</div></nav>
+
+<main class="container py-4">
+  <h1 class="mb-1">Cómo llegar</h1>
+  <div class="row g-3">
+    <div class="col-lg-8">
+      <div id="map" style="height:480px" class="rounded-3 shadow-sm"></div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Ruta más cercana</h5>
+          <p class="small">Destino fijo: <strong>Costa Rica, Alajuela, Guácima Abajo, Calle Los Laureles</strong>. Se marcará tu ubicación como origen (si autorizas).</p>
+          <div id="panelRuta" class="small"></div>
+          <div class="d-grid gap-2 mt-3">
+            <a id="btnGMaps" class="btn btn-primary d-inline-flex align-items-center justify-content-center gap-2" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/dir/?api=1&destination=Costa%20Rica%2C%20Alajuela%2C%20Gu%C3%A1cima%20Abajo%2C%20Calle%20Los%20Laureles">
+              <img src="images/maps.jpg" alt="Google Maps" width="18" height="18"><span>Abrir en Google Maps</span>
+            </a>
+            <a id="btnWaze" class="btn btn-dark d-inline-flex align-items-center justify-content-center gap-2" target="_blank" rel="noopener"
+               href="https://waze.com/ul?navigate=yes">
+              <img src="images/waze.jpg" alt="Waze" width="18" height="18"><span>Abrir en Waze</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="mt-0">
+  <div class="container py-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-12 small text-center">
+        <div class="d-inline-flex align-items-center gap-3">
+          <span>Síguenos:</span>
+          <a href="https://www.instagram.com/lux_detailingcarwsh?igsh=MnBrNWcwdmpkMTV6" target="_blank" rel="noopener" class="d-inline-flex align-items-center gap-1">
+            <img src="images/instagram.jpg" alt="Instagram" width="18" height="18"> <span>Instagram</span>
+          </a>
+          <span>·</span>
+          <a href="https://wa.me/50684529792" target="_blank" rel="noopener" class="d-inline-flex align-items-center gap-1">
+            <img src="images/whatsapp.jpg" alt="WhatsApp" width="18" height="18"> <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 text-center small mt-2">© <span id="year"></span> LuxDetailing Center — <a class="mx-2" href="acerca.html">Acerca</a>·<a class="mx-2" href="contacto.html">Contacto</a>·<a class="mx-2" href="index.html">Home</a></div>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script><script src="tools/config.js"></script>
+<script>
+  const DESTINO_ADDRESS = "Costa Rica, Alajuela, Guácima Abajo, Calle Los Laureles";
+  const FALLBACK_DEST = {lat:9.958909, lng:-84.264752};
+
+  function setLinks(destLatLng, originLatLng){
+    const g = document.getElementById('btnGMaps');
+    const w = document.getElementById('btnWaze');
+    let gUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(DESTINO_ADDRESS);
+    if(originLatLng && originLatLng.lat && originLatLng.lng){
+      gUrl += '&origin=' + originLatLng.lat + ',' + originLatLng.lng;
+    }
+    g.href = gUrl;
+    if(destLatLng && destLatLng.lat && destLatLng.lng){
+      w.href = 'https://waze.com/ul?ll=' + destLatLng.lat + ',' + destLatLng.lng + '&navigate=yes';
+    }else{
+      w.href = 'https://waze.com/ul?q=' + encodeURIComponent(DESTINO_ADDRESS) + '&navigate=yes';
+    }
+  }
+
+  function start(){
+    const KEY = (window.__LUX_CONFIG__ && (window.__LUX_CONFIG__.GOOGLE_MAPS_API_KEY||'').trim()) || '';
+    if(KEY){
+      window.initMap = function(){
+        const map = new google.maps.Map(document.getElementById('map'), {center:FALLBACK_DEST, zoom: 14});
+        const geocoder = new google.maps.Geocoder();
+        const dirService = new google.maps.DirectionsService();
+        const dirRenderer = new google.maps.DirectionsRenderer({suppressMarkers:true});
+        dirRenderer.setMap(map);
+        dirRenderer.setPanel(document.getElementById('panelRuta'));
+        const bounds = new google.maps.LatLngBounds();
+
+        geocoder.geocode({ address: DESTINO_ADDRESS }, (results, status) => {
+          let destLatLng;
+          if (status === 'OK' && results[0]) {
+            destLatLng = results[0].geometry.location;
+          } else {
+            destLatLng = new google.maps.LatLng(FALLBACK_DEST.lat, FALLBACK_DEST.lng);
+          }
+          const destMarker = new google.maps.Marker({position: destLatLng, map, title: 'Destino'});
+          const iw = new google.maps.InfoWindow({ content: `<div><strong>Destino</strong><br>${DESTINO_ADDRESS}</div>` });
+          destMarker.addListener('click', ()=>iw.open({anchor:destMarker, map}));
+          bounds.extend(destLatLng);
+          map.fitBounds(bounds);
+          setLinks({lat: destLatLng.lat(), lng: destLatLng.lng()}, null);
+
+          function routeFrom(originLatLng){
+            new google.maps.Marker({
+              position: originLatLng, map, title: 'Tu ubicación',
+              icon: { path: google.maps.SymbolPath.CIRCLE, scale: 6, fillColor: '#0ea5e9', fillOpacity: 1, strokeColor: '#0b1220', strokeWeight: 1 }
+            });
+            bounds.extend(originLatLng);
+            bounds.extend(destLatLng);
+            map.fitBounds(bounds);
+            dirService.route({
+              origin: originLatLng,
+              destination: DESTINO_ADDRESS,
+              travelMode: google.maps.TravelMode.DRIVING
+            }).then(r => dirRenderer.setDirections(r)).catch(()=>{});
+            setLinks({lat: destLatLng.lat(), lng: destLatLng.lng()}, originLatLng);
+          }
+
+          if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(pos => {
+              routeFrom({lat: pos.coords.latitude, lng: pos.coords.longitude});
+            }, () => {});
+          }
+        });
+      };
+      const s=document.createElement('script');
+      s.src = 'https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(KEY)+'&callback=initMap';
+      s.async=true; s.defer=true; document.head.appendChild(s);
+    }else{
+      // Leaflet fallback
+      const css=document.createElement('link'); css.rel='stylesheet'; css.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(css);
+      const js=document.createElement('script'); js.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      js.onload=function(){ initLeaflet(); };
+      document.body.appendChild(js);
+    }
+  }
+
+  async function geocodeNominatim(query){
+    try{
+      const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(query), {headers:{'Accept-Language':'es-CR'}});
+      const j = await r.json();
+      if (j && j[0]) return { lat: parseFloat(j[0].lat), lng: parseFloat(j[0].lon) };
+    }catch(_){}
+    return null;
+  }
+
+  async function initLeaflet(){
+    const map = L.map('map').setView([FALLBACK_DEST.lat, FALLBACK_DEST.lng], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+
+    let dest = await geocodeNominatim(DESTINO_ADDRESS);
+    if(!dest) dest = {lat:FALLBACK_DEST.lat, lng:FALLBACK_DEST.lng};
+    const destMarker = L.marker([dest.lat, dest.lng], {title:'Destino'}).bindPopup(`<strong>Destino</strong><br>${DESTINO_ADDRESS}`);
+    destMarker.addTo(map).openPopup();
+    setLinks(dest, null);
+
+    let routeLine = null;
+    const layers = [destMarker];
+    function fit(){
+      const g = L.featureGroup(layers);
+      if(layers.length) map.fitBounds(g.getBounds(), {padding:[20,20]});
+    }
+
+    async function routeFrom(o){
+      const userMarker = L.marker([o.lat, o.lng], {title:'Tu ubicación'}).bindPopup('Tu ubicación');
+      userMarker.addTo(map); layers.push(userMarker);
+      try{
+        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${dest.lng},${dest.lat}?overview=full&geometries=geojson`;
+        const d = await (await fetch(url)).json();
+        if(d && d.routes && d.routes[0]){
+          const r=d.routes[0];
+          const coords=r.geometry.coordinates.map(c=>[c[1],c[0]]);
+          if(routeLine) map.removeLayer(routeLine);
+          routeLine = L.polyline(coords, {color:'#0ea5e9', weight:5}).addTo(map);
+          layers.push(routeLine);
+          const km=(r.distance/1000).toFixed(1); const min=Math.round(r.duration/60);
+          document.getElementById('panelRuta').innerHTML = `<strong>Distancia:</strong> ${km} km · <strong>Tiempo aprox:</strong> ${min} min`;
+        }
+      }catch(_){}
+      setLinks(dest, o);
+      fit();
+    }
+
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(pos => routeFrom({lat: pos.coords.latitude, lng: pos.coords.longitude}), () => fit());
+    }else{
+      fit();
+    }
+  }
+
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', start); } else { start(); }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body></html>
