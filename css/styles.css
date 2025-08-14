@@ -16,7 +16,7 @@ body{background:#fff;color:#0f172a;}
 footer{background:#0b1220;color:#cbd5e1;}
 footer a{color:#93c5fd;text-decoration:none;}
 footer a:hover{text-decoration:underline;}
-/* Before/After slider */
+
 .ba-wrap{position:relative;overflow:hidden;border-radius:12px;border:1px solid #e5e7eb;background:#000;}
 .ba-wrap img{display:block;width:100%;height:auto;}
 .ba-after, .ba-before{position:absolute;inset:0;}
@@ -24,13 +24,13 @@ footer a:hover{text-decoration:underline;}
 .ba-handle{position:absolute;top:0;bottom:0;width:2px;background:#fff;left:50%;transform:translateX(-1px);box-shadow:0 0 0 2px rgba(0,0,0,.25);}
 .ba-label{position:absolute;top:10px;left:10px;background:rgba(11,18,32,.7);color:#fff;padding:4px 8px;border-radius:6px;font-size:12px;}
 .ba-label.after{left:auto;right:10px;}
-/* Cards */
+
 .card h5{margin:0 0 .25rem 0;}
-/* Util */
+
 .small-muted{font-size:.9rem;color:#64748b;}
 
 
-/* ----- Robust carousel sizing even without media files ----- */
+
 .carousel-item{position:relative;min-height:420px;background:#0b1220;}
 .carousel-item img,.carousel-item video{width:100%;height:420px;object-fit:cover;display:block;}
 @media (min-width: 992px){
@@ -39,18 +39,15 @@ footer a:hover{text-decoration:underline;}
 }
 .carousel-caption{backdrop-filter: blur(2px);}
 
-/* Improve pricing tables and cards */
 .card{border-radius:14px;border-color:#e5e7eb;box-shadow:0 2px 6px rgba(2,6,23,.04);}
 .card .list-group-item{border-color:#eef2f7;}
 .price-badge{background:#0ea5e9;color:#fff;border-radius:8px;padding:.15rem .5rem;font-weight:600;}
 .section-sub{color:#64748b;font-size:.95rem}
 
-/* Before/After slider sizing guard (if images missing) */
 .ba-wrap{min-height:260px;background:#0b1220;}
 .ba-before img,.ba-after img{height:100%;object-fit:cover}
 
 
-/* Better Before/After sizing with aspect ratio */
 .ba-wrap{position:relative;overflow:hidden;border-radius:12px;border:1px solid #e5e7eb;background:#000;aspect-ratio:16/9;}
 .ba-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .ba-after,.ba-before{position:absolute;inset:0;}
@@ -60,12 +57,10 @@ footer a:hover{text-decoration:underline;}
 .ba-label.after{left:auto;right:10px;}
 
 
-/* ----- Galería: tamaño más pequeño y consistente ----- */
 .ba-wrap{aspect-ratio:4/3; max-width:720px; margin:0 auto;}
 @media (max-width: 575.98px){
   .ba-wrap{max-width:100%;}
 }
 
-/* ----- Multimedia: cuadrícula de videos y tamaño uniforme ----- */
 .media-grid .ratio{border-radius:12px; overflow:hidden; background:#000;}
 .media-grid video{width:100%; height:100%; object-fit:cover; display:block;}
