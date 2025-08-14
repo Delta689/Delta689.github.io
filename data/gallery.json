@@ -1,19 +1,9 @@
 {
   "pairs": [
     {
-      "titulo": "Exterior",
-      "antes": "images/antes-lavado.jpg",
-      "despues": "images/despues-lavado.jpg"
-    },
-    {
-      "titulo": "Tablero (Dash)",
-      "antes": "images/antes-dash.jpg",
-      "despues": "images/despues-dash.jpg"
-    },
-    {
-      "titulo": "Llanta",
-      "antes": "images/antes-llanta.jpg",
-      "despues": "images/despues-llanta.jpg"
+      "titulo": "Lavado exterior",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-lavado.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-lavado.jpg"
     }
   ]
 }
