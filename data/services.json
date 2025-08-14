@@ -1,0 +1,55 @@
+{
+  "paquetes": [
+    {
+      "nombre": "Lavado básico",
+      "incluye": [
+        "Lavado y detallado exterior del vehículo",
+        "Aspirado profundo",
+        "Limpieza de vidrios",
+        "Detallado del interior",
+        "Abrillantadores",
+        "Gel de llantas",
+        "Aromatizantes"
+      ],
+      "precios": {
+        "Sedan": 10000,
+        "SUV": 11000,
+        "Pick up": 12000
+      }
+    },
+    {
+      "nombre": "Lavado Meguiar’s",
+      "incluye": [
+        "Shampoo + cera con carnauba",
+        "Restaurador de partes negras",
+        "Líquido limpiador de vidrios",
+        "Detallador de interiores (no grasoso)",
+        "Producto limpiador y humectante para asientos de cuero",
+        "Gel de llantas Meguiar’s"
+      ],
+      "precios": {
+        "Sedan": 12000,
+        "SUV": 13000,
+        "Pick up": 14000
+      }
+    }
+  ],
+  "extras": [
+    {
+      "nombre": "Pulido de focos",
+      "precio": 10000
+    },
+    {
+      "nombre": "Pulido de vidrios",
+      "precio": null
+    },
+    {
+      "nombre": "Eliminación de rayones",
+      "precio": null
+    },
+    {
+      "nombre": "Pintado de calipers",
+      "precio": 50000
+    }
+  ]
+}

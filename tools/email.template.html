@@ -1,0 +1,41 @@
+
+<!-- Copia este HTML dentro de tu EmailJS Template -->
+<table width="100%" cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;padding:24px 0;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;">
+        <tr><td style="background:#0b1220;color:#ffffff;padding:20px 24px;">
+          <h2 style="margin:0;font-size:20px;line-height:1.3;">Cita Autolavado — LuxDetailing Center</h2>
+          <div style="font-size:12px;opacity:.9;margin-top:6px;">Notificación automática</div>
+        </td></tr>
+        <tr><td style="padding:20px 24px;">
+          <h3 style="margin:0 0 12px 0;font-size:16px;color:#111827;">Datos de contacto</h3>
+          <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#111827;">
+            <tr><td style="padding:4px 0;width:180px;color:#6b7280;">Email:</td><td>{{from_email}}</td></tr>
+            <tr><td style="padding:4px 0;color:#6b7280;">Nombre completo:</td><td>{{user_name}}</td></tr>
+            <tr><td style="padding:4px 0;color:#6b7280;">Número de teléfono:</td><td>{{user_phone}}</td></tr>
+          </table>
+          <h3 style="margin:16px 0 12px 0;font-size:16px;color:#111827;">Cita</h3>
+          <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#111827;">
+            <tr><td style="padding:4px 0;width:180px;color:#6b7280;">Fecha del servicio:</td><td>{{fecha_servicio}}</td></tr>
+            <tr><td style="padding:4px 0;color:#6b7280;">Hora del servicio (CR):</td><td>{{hora_servicio}}</td></tr>
+          </table>
+          <h3 style="margin:16px 0 12px 0;font-size:16px;color:#111827;">Servicio solicitado</h3>
+          <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#111827;">
+            <tr><td style="padding:4px 0;width:180px;color:#6b7280;">Tipo de lavado:</td><td>{{tipo_lavado_nombre}} — {{tipo_lavado_precio}}</td></tr>
+            <tr><td style="padding:4px 0;color:#6b7280;">Tipo de vehículo:</td><td>{{tipo_vehiculo_nombre}} — {{tipo_vehiculo_precio}}</td></tr>
+            <tr><td style="padding:4px 0;color:#6b7280;vertical-align:top;">Servicios adicionales:</td>
+                <td style="white-space:pre-line;">{{extras_list}}</td></tr>
+          </table>
+          <div style="margin-top:16px;padding:12px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;color:#374151;font-size:13px;">
+            <strong>Mensaje completo:</strong>
+            <div style="white-space:pre-line;margin-top:6px;">{{message}}</div>
+          </div>
+        </td></tr>
+        <tr><td style="background:#f3f4f6;color:#6b7280;padding:14px 24px;font-size:12px;text-align:center;">
+          Enviado automáticamente por LuxDetailing Center · La Guácima, Alajuela
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
