@@ -131,13 +131,18 @@
     btnWaze.href = 'https://waze.com/ul?ll=' + DEST.lat + ',' + DEST.lng + '&navigate=yes';
   }
 
-  // Google Maps principal
+  // Google Maps principal (ajuste mínimo: maneja timeout para evitar doble render con Leaflet)
   function loadGoogleMaps(){
     return new Promise((resolve, reject)=>{
       const KEY = (window.__LUX_CONFIG__ && (window.__LUX_CONFIG__.GOOGLE_MAPS_API_KEY||'').trim()) || '';
       if(!KEY) return reject(new Error('no-key'));
 
+      let timedOut = false;
+      const tid = setTimeout(()=>{ timedOut = true; reject(new Error('timeout')); }, 12000);
+
       window.initMap = function(){
+        if (timedOut) return;
+        clearTimeout(tid);
         try{
           const map = new google.maps.Map(document.getElementById('map'), { center: DEST, zoom: 16 });
           const dirService  = new google.maps.DirectionsService();
@@ -149,7 +154,6 @@
           const iw = new google.maps.InfoWindow({ content: `<div><strong>Destino</strong><br>${DEST_LABEL}</div>` });
           destMarker.addListener('click', ()=>iw.open({anchor:destMarker, map}));
 
-          // ruta desde user si hay, si no, dejamos solo destino
           function routeFrom(originLatLng){
             new google.maps.Marker({
               position: originLatLng, map, title: 'Tu ubicación',
@@ -170,7 +174,7 @@
             }).catch(()=>{ /* sin ruta no pasa nada */ });
           }
 
-          setLinks(); // prepara enlaces con My Location si aún no hay user
+          setLinks();
           resolve({ map, routeFrom });
         }catch(e){ reject(e); }
       };
@@ -178,11 +182,8 @@
       const s = document.createElement('script');
       s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(KEY) + '&callback=initMap';
       s.async = true; s.defer = true;
-      s.onerror = ()=>reject(new Error('load-error'));
+      s.onerror = ()=>{ clearTimeout(tid); reject(new Error('load-error')); };
       document.head.appendChild(s);
-
-      // si el script no acaba de cargar
-      setTimeout(()=>reject(new Error('timeout')), 12000);
     });
   }
 
@@ -197,11 +198,10 @@
 
       const map = L.map('map').setView([DEST.lat, DEST.lng], 16);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
-      const destMarker = L.marker([DEST.lat, DEST.lng], { title:'Destino' }).addTo(map).bindPopup(`<strong>Destino</strong><br>${DEST_LABEL}`).openPopup();
+      L.marker([DEST.lat, DEST.lng], { title:'Destino' }).addTo(map).bindPopup(`<strong>Destino</strong><br>${DEST_LABEL}`).openPopup();
 
-      // Dibuja ruta con OSRM si hay user
       async function routeFrom(o){
-        const userMarker = L.marker([o.lat, o.lng], { title:'Tu ubicación' }).addTo(map).bindPopup('Tu ubicación');
+        L.marker([o.lat, o.lng], { title:'Tu ubicación' }).addTo(map).bindPopup('Tu ubicación');
         try{
           const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${DEST.lng},${DEST.lat}?overview=full&geometries=geojson`;
           const d = await (await fetch(url)).json();
@@ -240,7 +240,6 @@
         userLL = await getUserLocation();
         setLinks();
         setStatus('Ubicación detectada. Listo para calcular ruta.', 'success');
-     
         if(window.__routeFrom) window.__routeFrom(userLL);
       }catch(e){
         setStatus('No se pudo obtener tu ubicación. Verifica permisos del navegador.', 'danger');
@@ -250,7 +249,6 @@
     // Intento con Google Maps, si falla Leaflet
     try{
       const g = await loadGoogleMaps();
-      
       try{
         userLL = await getUserLocation();
         setLinks();
@@ -278,6 +276,5 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
