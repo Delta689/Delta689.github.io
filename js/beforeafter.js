@@ -1,4 +1,4 @@
-// Before/After Slider (hover en desktop + drag en touch/lápiz)
+// Slider 
 (function(){
   function initBA(wrap){
     if(!wrap || wrap.__ba_inited) return;
@@ -37,20 +37,20 @@
       try { wrap.releasePointerCapture && wrap.releasePointerCapture(evt && evt.pointerId); } catch(e){}
     }
 
-    // HOVER en desktop
+    // HOVER 
     wrap.addEventListener('pointermove', (e)=>{ if (e.pointerType === 'mouse') onMove(e); });
 
-    // Drag desde el handle
+  
     handle.style.touchAction = 'none';
     handle.addEventListener('pointerdown', startDrag);
 
-    // Click/tap en el wrapper salta el handle a esa posición
+    
     wrap.addEventListener('pointerdown', function(e){
       if (e.target === handle) return;
       onMove(e);
     });
 
-    // Touch fallback
+    
     wrap.addEventListener('touchmove', onMove, { passive: true });
   }
 
