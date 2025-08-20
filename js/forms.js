@@ -1,19 +1,19 @@
 
 $(function(){
 
-  // ------- CONFIG PRECIOS --------
+  // Precios
   const precios = {
     "Lavado básico":   {"Sedan":10000,"SUV":11000,"Pick up":12000},
     "Lavado Meguiar’s":{"Sedan":12000,"SUV":13000,"Pick up":14000}
   };
 
-  // ------- HELPERS --------
+  // Dia / hora
   function crc(n){ return '₡ ' + (n||0).toLocaleString('es-CR'); }
   function isLaboral(fecha){
     if(!fecha) return false;
     const d = new Date(fecha+'T12:00:00');
     const day = d.getDay();
-    return day>=1 && day<=6; // 1=Lunes ... 6=Sábado
+    return day>=1 && day<=6; // 1=Lunes - 6=Sábado
   }
   function horaValida(hhmm){
     if(!hhmm) return false;
@@ -22,7 +22,7 @@ $(function(){
     return mins>=360 && mins<=900; // 06:00–15:00
   }
 
-  // ------- VALIDACIONES EN UI --------
+  // Validar informacion
   const $fecha = $('input[name="fecha_servicio"]');
   $fecha.on('change', function(){
     const v = this.value; if(!v) return;
@@ -41,7 +41,7 @@ $(function(){
     }
   });
 
-  // ------- LECTURA DE SELECCIONES --------
+  // Selecciones
   function compute(){
     const paquete = $('#selPaquete').val();
     const veh     = $('#selVehiculo').val();
@@ -67,11 +67,11 @@ $(function(){
       tipo_lavado_nombre: paquete||'-',
       tipo_lavado_precio: crc(base),
       tipo_vehiculo_nombre: veh||'-',
-      tipo_vehiculo_precio: crc(base) // referencia del combo
+      tipo_vehiculo_precio: crc(base) 
     };
   }
 
-  // ------- MENSAJE FORMATEADO --------
+  // Formato del mensaje
   function construirMensaje(){
     const f = new FormData(document.getElementById('frmContacto'));
     const email=(f.get('email')||'').trim();
@@ -100,7 +100,7 @@ $(function(){
     return {cuerpo, email, nombre, tel, fecha, hora, C};
   }
 
-  // ------- FEEDBACK UI --------
+  
   function showStatus(kind, msg){
     const $s = $('#sendStatus');
     $s.removeClass('d-none alert-info alert-success alert-danger')
@@ -136,9 +136,9 @@ $(function(){
     return emailjs.send(cfg.EMAILJS_SERVICE_ID, cfg.EMAILJS_TEMPLATE_ID, params);
   }
 
-  // ------- CLICK: ENVIAR CORREO --------
+  // Correo
   $('#btnCorreo').on('click', async function(){
-    // Validación mínima
+    // Validación 
     const f = new FormData(document.getElementById('frmContacto'));
     const email=(f.get('email')||'').trim();
     const nombre=(f.get('nombre')||'').trim();
@@ -154,7 +154,7 @@ $(function(){
     if(!isTelCR(tel)){ alert('Ingresa un teléfono CR válido (8 dígitos, con o sin +506).'); return; }
     if(!fecha || !(/\d{4}-\d{2}-\d{2}/.test(fecha))){ alert('Elige una fecha.'); return; }
     if(!hora || !(/\d{2}:\d{2}/.test(hora))){ alert('Elige una hora.'); return; }
-    // Reglas de negocio
+    // Reglas del negocio
     const d = new Date(fecha+'T12:00:00'); if(d.getDay()===0){ alert('Los domingos no atendemos.'); return; }
     const [hh,mm] = hora.split(':').map(Number); const mins = hh*60+mm;
     if(mins<360 || mins>900){ alert('Horario: 06:00 a 15:00.'); return; }
@@ -168,7 +168,7 @@ $(function(){
       }catch(err){
         console.error(err);
         showStatus('danger','No se pudo enviar con EmailJS. Intentando abrir tu cliente de correo...');
-        // Fallback a mailto
+       
         const {cuerpo} = construirMensaje();
         const subject = encodeURIComponent('Cita Autolavado');
         const body = encodeURIComponent(cuerpo);
@@ -177,7 +177,7 @@ $(function(){
         $(this).prop('disabled', false);
       }
     }else{
-      // Sin EmailJS configurado: mailto
+      
       const {cuerpo} = construirMensaje();
       const subject = encodeURIComponent('Cita Autolavado');
       const body = encodeURIComponent(cuerpo);
@@ -185,7 +185,7 @@ $(function(){
     }
   });
 
-  // ------- CLICK: WHATSAPP --------
+  // Whatsapp
   $('#btnWhatsApp').on('click', function(){
     const {cuerpo} = construirMensaje();
     const encoded = encodeURIComponent(cuerpo);
