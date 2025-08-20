@@ -1,6 +1,5 @@
 window.__LUX_CONFIG__ = {
 
-  window.__LUX_CONFIG__ = {
   GOOGLE_MAPS_API_KEY: "AIzaSyA3FdtSv10vlNbLOq-8_-ERN4mtwe5apNk",
 
   // bases
