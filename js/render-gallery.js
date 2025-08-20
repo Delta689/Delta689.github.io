@@ -1,12 +1,11 @@
+// Render de Galería (Antes/Después) desde data/gallery.json – con prefijo CDN si aplica
 (function(){
-  
   function withBase(src){
     if(!src) return '';
     if(/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src; // ya es absoluta
     const cfg  = window.__LUX_CONFIG__ || {};
     const base = cfg.IMAGES_BASE || window.IMAGES_BASE || '';
     if(!base) return src; // sin base: usa rutas locales
-    // acepta images/, /images/ o ./images/ 
     const cleaned = src.replace(/^(?:\.?\/)?images\//i, '');
     return base + cleaned;
   }
@@ -24,7 +23,7 @@
         <div class="ba-handle"></div>
       </div>`;
   }
-  
+
   document.addEventListener('DOMContentLoaded', function(){
     const root = document.getElementById('gal-root');
     if(!root) return;
