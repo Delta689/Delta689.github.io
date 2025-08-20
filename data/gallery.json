@@ -1,9 +1,35 @@
+
 {
   "pairs": [
     {
       "titulo": "Lavado exterior",
       "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-lavado.jpg",
       "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-lavado.jpg"
+    },
+    {
+      "titulo": "Tablero (dash)",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-dash.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-dash.jpg"
+    },
+    {
+      "titulo": "Llanta",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-llanta.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-llanta.jpg"
+    },
+    {
+      "titulo": "Interior (1)",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-interior1.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-interior1.jpg"
+    },
+    {
+      "titulo": "Interior (2)",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-interior2.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-interior2.jpg"
+    },
+    {
+      "titulo": "Carro completo",
+      "antes": "https://pub-...r2.dev/images/antes-carro.jpg",
+      "despues": "https://pub-...r2.dev/images/despues-carro.jpg"
     }
   ]
 }
