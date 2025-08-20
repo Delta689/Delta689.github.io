@@ -1,4 +1,4 @@
-// Render de Galería (Antes/Después) desde data/gallery.json – con prefijo CDN si aplica
+// Render de galeria
 (function(){
   function withBase(src){
     if(!src) return '';
