@@ -1,5 +1,5 @@
 
-// Render de Servicios desde data/services.json
+// Render del servicios desde data/services.json
 (function(){
   function crc(n){ return '₡ ' + Number(n||0).toLocaleString('es-CR'); }
 
