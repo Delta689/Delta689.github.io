@@ -105,7 +105,7 @@
 <script src="tools/config.js"></script>
 
 <script>
-  // Coordenadas exactas del destino (9°56'13.3"N 84°15'46.9"W)
+  // Coordenadas exactas destino (9°56'13.3"N 84°15'46.9"W)
   const DEST = { lat: 9.93702778, lng: -84.26302778 };
   const DEST_LABEL = "Costa Rica, Alajuela, Guácima Abajo, Calle Los Laureles";
 
@@ -127,11 +127,11 @@
       + '&origin=' + encodeURIComponent(origin)
       + '&destination=' + encodeURIComponent(DEST.lat + ',' + DEST.lng);
 
-    // Waze usa el origen del dispositivo; solo pasamos destino
+    // Waze 
     btnWaze.href = 'https://waze.com/ul?ll=' + DEST.lat + ',' + DEST.lng + '&navigate=yes';
   }
 
-  // Google Maps principal (ajuste mínimo: maneja timeout para evitar doble render con Leaflet)
+  // Google Maps principal 
   function loadGoogleMaps(){
     return new Promise((resolve, reject)=>{
       const KEY = (window.__LUX_CONFIG__ && (window.__LUX_CONFIG__.GOOGLE_MAPS_API_KEY||'').trim()) || '';
@@ -232,9 +232,9 @@
 
   //  Inicio
   (async function start(){
-    setLinks(); // prepara botones con My Location por defecto
+    setLinks(); 
 
-    // Botón manual 
+    // Boton manual 
     btnGeo.addEventListener('click', async ()=>{
       try{
         userLL = await getUserLocation();
