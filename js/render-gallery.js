@@ -2,10 +2,10 @@
 (function(){
   function withBase(src){
     if(!src) return '';
-    if(/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src; // ya es absoluta
+    if(/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src;
     const cfg  = window.__LUX_CONFIG__ || {};
     const base = cfg.IMAGES_BASE || window.IMAGES_BASE || '';
-    if(!base) return src; // sin base: usa rutas locales
+    if(!base) return src;
     const cleaned = src.replace(/^(?:\.?\/)?images\//i, '');
     return base + cleaned;
   }
