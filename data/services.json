@@ -23,9 +23,14 @@
         "Shampoo + cera con carnauba",
         "Restaurador de partes negras",
         "Líquido limpiador de vidrios",
-        "Detallador de interiores (no grasoso)",
+        "Lavado y detallado exterior del vehículo",
+        "Aspirado profundo",
+        "Limpieza de vidrios",
+        "Detallador de interiores",
         "Producto limpiador y humectante para asientos de cuero",
-        "Gel de llantas Meguiar’s"
+        "Gel de llantas Meguiar’s",
+        "Abrillantadores",
+        "Aromatizantes"
       ],
       "precios": {
         "Sedan": 12000,
