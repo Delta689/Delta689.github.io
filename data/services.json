@@ -1,0 +1,67 @@
+{
+  "paquetes": [
+    {
+      "nombre": "Lavado básico",
+      "descripcion": "Mantenimiento estético para mantener el vehículo limpio, ordenado y con buena presencia.",
+      "duracion": "60 a 75 min",
+      "incluye": [
+        "Lavado y detallado exterior",
+        "Aspirado profundo",
+        "Limpieza de vidrios",
+        "Detallado interior",
+        "Abrillantadores",
+        "Gel para llantas",
+        "Aromatizante"
+      ],
+      "precios": {
+        "Sedan": 10000,
+        "SUV": 11000,
+        "Pick up": 12000
+      }
+    },
+    {
+      "nombre": "Lavado Meguiar’s",
+      "descripcion": "Paquete premium con acabado superior para clientes que quieren una imagen más refinada.",
+      "duracion": "90 a 120 min",
+      "incluye": [
+        "Shampoo + cera con carnauba",
+        "Restaurador de partes negras",
+        "Limpiador premium de vidrios",
+        "Lavado y detallado exterior",
+        "Aspirado profundo",
+        "Detallador de interiores",
+        "Humectante para asientos de cuero",
+        "Gel Meguiar’s para llantas",
+        "Abrillantadores",
+        "Aromatizante"
+      ],
+      "precios": {
+        "Sedan": 12000,
+        "SUV": 13000,
+        "Pick up": 14000
+      }
+    }
+  ],
+  "extras": [
+    {
+      "nombre": "Pulido de focos",
+      "descripcion": "Mejora visibilidad y apariencia frontal.",
+      "precio": 10000
+    },
+    {
+      "nombre": "Pulido de vidrios",
+      "descripcion": "Se cotiza según condición y superficie.",
+      "precio": null
+    },
+    {
+      "nombre": "Eliminación de rayones",
+      "descripcion": "Se cotiza según profundidad y cantidad.",
+      "precio": null
+    },
+    {
+      "nombre": "Pintado de calipers",
+      "descripcion": "Acabado visual deportivo y premium.",
+      "precio": 50000
+    }
+  ]
+}

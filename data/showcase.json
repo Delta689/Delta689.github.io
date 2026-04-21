@@ -1,0 +1,48 @@
+{
+  "comparativas": [
+    {
+      "titulo": "Lavado exterior",
+      "descripcion": "Brillo, limpieza y presencia visual mejorada.",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-lavado.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-lavado.jpg"
+    },
+    {
+      "titulo": "Tablero e interior",
+      "descripcion": "Interior más limpio, uniforme y cuidado.",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-dash.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-dash.jpg"
+    },
+    {
+      "titulo": "Llantas y detalle final",
+      "descripcion": "Acabado más premium en los detalles.",
+      "antes": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/antes-llanta.jpg",
+      "despues": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/images/despues-llanta.jpg"
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Lavado en proceso",
+      "descripcion": "Parte real del trabajo.",
+      "webm": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/LavadoenProceso.webm",
+      "mp4": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/LavadoenProceso.mp4"
+    },
+    {
+      "titulo": "Proceso detallado",
+      "descripcion": "Ejecución cuidada hasta el acabado final.",
+      "webm": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/Lavadoenprocesopart2.webm",
+      "mp4": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/Lavadoenprocesopart2.mp4"
+    },
+    {
+      "titulo": "Antes del servicio",
+      "descripcion": "Estado previo del vehículo.",
+      "webm": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/video2.webm",
+      "mp4": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/video2.mp4"
+    },
+    {
+      "titulo": "Resultado final",
+      "descripcion": "Resultado después del detallado.",
+      "webm": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/video.webm",
+      "mp4": "https://pub-bd7613c8c4cf4633acde18714ce2b3f3.r2.dev/media/video.mp4"
+    }
+  ]
+}
