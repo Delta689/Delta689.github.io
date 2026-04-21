@@ -1,9 +1,9 @@
 
 window.__LUX_EMAIL__ = {
-  EMAILJS_PUBLIC_KEY: "PEGA_AQUI_TU_PUBLIC_KEY",
-  EMAILJS_SERVICE_ID: "PEGA_AQUI_TU_SERVICE_ID",
-  EMAILJS_TEMPLATE_ID: "PEGA_AQUI_TU_TEMPLATE_ID",
+  EMAILJS_PUBLIC_KEY: "C-UtycGxv0AjylT6W",
+  EMAILJS_SERVICE_ID: "service_0gqx5hn",
+  EMAILJS_TEMPLATE_ID: "template_apozb0o",
   TO_EMAIL: "diegomonge0899@gmail.com",
   CC_EMAIL: "di360ray@gmail.com",
-  SUBJECT: "Solicitud de cita - LuxDetailing Center"
+  SUBJECT: "Cita Autolavado"
 };
